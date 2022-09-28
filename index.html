@@ -21,7 +21,7 @@
               <span>fechar</span>
           </div>
           
-          <header>
+          <header id="home">
               <div class="img-wrapper">
                   <img src="imagens/bg2.jpg" alt="">
               </div>    
@@ -222,12 +222,31 @@
                     </div>
                   </div>
                   <label for="prazo">Prazo</label>
-                  <input type="range" name="prazo" id="prazo">
+                  <input type="range" name="prazo" id="prazo" min="1" max="10">
+                  <label id="preco">R$ 0,00</label>
                   <button class="btn btn-orcamento" type="submit">Enviar</button>
                 </form>
               </div>
             </section>
 
+            <footer>
+              <div class="footer-content">
+                <p>
+                  Copyright &copy; 2020, ETECIA DS - Todos os diretos reservados
+                </p>
+                <div class="social-list">
+                  <ul>
+                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fab fa-github"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </footer>
+            <a href="#home" id="link-topo">
+              <i class="fas fa-arrow-up"></i>
+            </a>
 
       </div>
   </body>
