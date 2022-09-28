@@ -96,7 +96,7 @@ header {
     height: 100%;
     overflow: hidden;
     background-color: rgba(0,0,0,0.80);
-    animation: zoom 25s;
+    animation: zoom 2s;
 }
 
 .img-wrapper img {
@@ -111,7 +111,7 @@ header {
         transform: scale(1.3);
     }
     100%{
-        transform: scale(1);
+        transform: scale(2);
     }
 }
 
@@ -162,6 +162,8 @@ header {
 
 }
 
+
+/*  animacao para movimentar os itens  */
 @keyframes moveBanner{
     0%{
         transform: translateY(10rem) rotateY(-30deg); 
@@ -196,7 +198,7 @@ header {
 .menu-item {
     text-align: center;
     margin-bottom: .2.5rem;
-
+    
 }
 
 .menu-link {
@@ -204,11 +206,20 @@ header {
     font-size: 1.5rem;
     color: #555;
     transition: color 1s;
+    
 }
 
 .menu-link:hover {
     color: #000;
+    animation: zoom 2s;
 }
+
+/*  para dar um zoom quando o cursor esta em cima de um item */
+.menu-item:hover {
+    color: #000;
+    animation: zoom 1s;
+}
+
 
 .banner button:hover {
     color: #000;
@@ -234,16 +245,18 @@ header {
     align-items: center;
     border-radius: 50%;
     transition: color 0.5s;
+    
 }
 
 .social-media i:hover {
     color: gray;
+    animation: zoom 1s;
 }
 
 .conhecimentos {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(6, 5.5rem);
+    grid-template-rows: repeat(6, 6.5rem);
     row-gap: .5rem;
 }
 
@@ -277,6 +290,12 @@ header {
     grid-row: 5 / -1;
 }
 
+.conhecimento:nth-child(7) {
+    grid-column: 8 / 10;
+    grid-row: 5 / -1;
+    
+}
+
 .sessao-conhecimentos {
     background-color: #f5f5f5;
 }
@@ -293,12 +312,28 @@ header {
     color: #4b4b4b;
     border-bottom: solid 3px #008080;
     margin-bottom: 1.5rem;
+    padding-top: 6rem;
 }
+
+
+/*  animacao para dar um zoom para os itens  */
+@keyframes moveConhecimento{
+    0%{
+        transform: translateX(50rem) rotateX(-30deg); 
+    }
+    100%{
+        transform: translateX(0) rotateX(0);
+        opacity: 1;
+    }
+}
+
 
 .conhecimento-header {
     display: flex;
     align-items: center;
     color: #4b4b4b;
+    animation: moveConhecimento 1s 1s forwards;
+    opacity: 0;
 }
 
 .conhecimento-header i {
@@ -309,6 +344,7 @@ header {
     font-family: var(--font-secundary);
     font-size: 2rem;
     padding-left: 1rem;
+    
 }
 
 .conhecimento-text {
@@ -316,18 +352,132 @@ header {
     margin-top: 1rem;
 }
 
+
+.conhecimento-text p {
+    animation: moveConhecimento 1s 1.5s forwards;
+    opacity: 0;
+}
+
 .conhecimentos-img-wrapper {
     grid-column: 7 / 11;
     grid-row: 2 / 6;
-    width: 100%;
+    width: 95%;
+
 }
 
 .conhecimentos-img-wrapper img {
     object-fit: cover;
     width: 100%;
     border-radius: 50%;
+    
 }
 
 
+.projetos {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card {  /* Elemento pai */
+    width: 18rem;
+    height: 25rem;
+    position: relative;
+}
+
+.card-img-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #262626;
+    border-radius: .6rem;
+}
+
+.card-img-wrapper img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: .6rem;
+    opacity: .8;
+    transition: opacity .3s;
+}
+
+
+.card:hover .card-img-wrapper img {
+    opacity: .4;
+}
+
+.card-info {  /* Elemento filho */
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 2rem;
+    text-shadow: 0.3 0.2rem 0.3rem rgba(0, 0, 0, .4);
+    transition: all .3s;
+}
+
+
+.card-info h2 {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 500;
+    color: #eee;
+}
+
+
+.card-info h3 {
+    font-family: var(--font-secundary);
+    font-weight: 400;
+    color: #80ffff;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+}
+
+.card-info p {  /* paragrafo */
+    font-family: var(--font-secundary);
+    color: #eee;
+    font-weight: 200;
+    width: 80%;
+    margin-bottom: 1rem;
+}
+
+
+.card-info button {  /* classe filha da classe card-info */
+    
+    width: 8rem; /* largura do botao Saiba mais */
+    height: 2.5rem; /* altura do botao Saiba mais */
+    background: #000000;  /* background do botao Saiba mais */
+    background: -webkit-linear-gradient(to right, #0f9b0f, #000000);  
+    background: linear-gradient(to top, #0f9b0f, #000000); 
+    font-family: var(--font-action);
+    cursor: pointer;
+    font-size: 1.1rem; /* Saiba mais */
+    color: #eee;  /* Cor do Saiba mais */
+    border-radius: .3rem;  /* borda do botao Saiba mais */
+    box-shadow: 0 .1rem .8rem rgba(0, 0, 0, .5);
+    border: none;
+}
+
+
+.card-info button:hover {
+    animation: zoom-button 1.8s;
+}
+
+
+.card:hover  .card-info {
+    bottom: 2rem;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+@keyframes zoom-button {
+    0%{
+        transform: scale(1.1); // velocidade de aumento do zoom
+    }
+    100%{
+        transform: scale(1.2); // duracao do zoom
+    }
+}
 
 
